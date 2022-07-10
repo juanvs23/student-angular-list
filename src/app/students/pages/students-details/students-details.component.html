@@ -1,0 +1,41 @@
+<app-header [title]="title"></app-header>
+<main *ngIf="message == 'student found'; else noStudent">
+  <div
+    class="detail-container"
+    [style]="{
+      backgroundColor:
+        dataStudent.Color != 'Black' ? dataStudent.Color : 'white',
+      color: dataStudent.Color != 'Black' ? '#333' : 'white'
+    }"
+  >
+    <div class="datails">
+      <h3 style="text-align: center">
+        <span style="font-weight: 400; display: block; font-size: 0.8em"
+          >Gender:</span
+        >
+        {{ getGender(dataStudent.Gender) }}
+      </h3>
+      <h3 style="text-align: center">
+        <span style="font-weight: 400; display: block; font-size: 0.8em"
+          >Grades:</span
+        >
+        {{ dataStudent.grades }}
+      </h3>
+      <h3 style="text-align: center">
+        <span style="font-weight: 400; display: block; font-size: 0.8em"
+          >Strength:</span
+        >
+        {{ dataStudent.Strength }}
+      </h3>
+      <h3 style="text-align: center">
+        <span style="font-weight: 400; display: block; font-size: 0.8em"
+          >Class:</span
+        >
+        {{ dataStudent.Class }}
+      </h3>
+      <a [routerLink]="['']">< Return </a>
+    </div>
+  </div>
+</main>
+<ng-template #noStudent><app-spinner></app-spinner></ng-template>
+<app-footer></app-footer>

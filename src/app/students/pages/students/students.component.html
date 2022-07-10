@@ -1,0 +1,18 @@
+<app-header [title]="title"></app-header>
+<main>
+  <div class="loading" *ngIf="students && students.length > 0; else noStudent">
+    <app-average
+      [average]="average"
+      [averageColor]="averageColor"
+    ></app-average>
+    <div class="students">
+      <app-card
+        class="card"
+        *ngFor="let student of students"
+        [student]="student"
+      ></app-card>
+    </div>
+  </div>
+  <ng-template #noStudent><app-spinner></app-spinner></ng-template>
+</main>
+<app-footer></app-footer>

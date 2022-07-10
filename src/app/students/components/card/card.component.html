@@ -1,0 +1,35 @@
+<div
+  [ngStyle]="{
+    color:
+      student?.Color?.toLowerCase() != 'white'
+        ? student?.Color?.toLowerCase()
+        : 'black'
+  }"
+>
+  <div class="car-container">
+    <h2>{{ student?.Name }}</h2>
+    <div class="gradeContainer">
+      <button
+        [ngClass]="showGrade == true ? 'active' : ''"
+        (click)="changeShowGrade()"
+      >
+        Show grade
+      </button>
+      <div
+        class="grade"
+        [style]="{
+          opacity: showGrade ? 1 : 0,
+          color:
+            student.grades < 3.0
+              ? 'red'
+              : student.grades >= 3.0 && student.grades <= 3.9
+              ? 'yellow'
+              : 'green'
+        }"
+      >
+        {{ student.grades.toFixed(2) }}
+      </div>
+    </div>
+    <a [routerLink]="['/student/', student.ID]">View More</a>
+  </div>
+</div>
